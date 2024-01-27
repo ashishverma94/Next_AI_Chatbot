@@ -36,10 +36,10 @@ const BotPage = ({fn}) => {
         updateQNA(YOU, question);
         setLoadingTwo(false)
 
-
+// http://localhost:3000/chat
         setLoading(true)
         axios
-            .post("http://localhost:3000/chat", {
+            .post("https://chatbot-server-self.vercel.app/chat", {
                 question,
             })
             .then((response) => {
