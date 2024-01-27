@@ -7,9 +7,14 @@ import '../index.css'
 const YOU = "you";
 const AI = "ai";
 
-const BotPage = ({fn}) => {
+const BotPage = ({ fn }) => {
     const inputRef = useRef();
-    const [qna, setQna] = useState([]);
+    const [qna, setQna] = useState([
+        { "from": "ai", 'value': "Hello! I am Jarvis. How can I assist you today? Feel free to ask anything." },
+        { "from": "you", 'value': "Please tell me about Web Developement." },
+        { "from": "you", 'value': "What is MERN stack?" }
+    ]);
+    
     const [loading, setLoading] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [lodingTwo, setLoadingTwo] = useState(false);
@@ -26,6 +31,7 @@ const BotPage = ({fn}) => {
 
     const updateQNA = (from, value) => {
         setQna((qna) => [...qna, { from, value }]);
+        console.log(qna)
     };
 
     // console.log(qna[qna.length-1]?.value )
@@ -36,7 +42,7 @@ const BotPage = ({fn}) => {
         updateQNA(YOU, question);
         setLoadingTwo(false)
 
-// http://localhost:3000/chat
+        // http://localhost:3000/chat
         setLoading(true)
         axios
             .post("https://chatbot-server-self.vercel.app/chat", {
@@ -77,7 +83,7 @@ const BotPage = ({fn}) => {
                         <h3>Jarvis</h3>
                         <p>Agent <span>(online)</span></p>
                     </div>
-                    <CloseSharpIcon onClick={()=>fn(false)} className='buttoncross' />
+                    <CloseSharpIcon onClick={() => fn(false)} className='buttoncross' />
 
                 </div>
             </div>
