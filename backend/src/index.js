@@ -12,6 +12,10 @@ const openai = new OpenAI({
   apiKey : process.env.OPEN_API_KEY
 });
 
+app.get('/ping', (req,res)=>{
+  res.send('pong') ;
+})
+
 app.post("/chat", async (req, res) => {
   const question = req.body.question;
 console.log(question) ;
